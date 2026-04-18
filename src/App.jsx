@@ -9,18 +9,6 @@ const App = () => {
   const [ideas, setIdeas] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const loadImageAsBase64 = (src) =>
-    new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      fetch(src)
-        .then((res) => res.blob())
-        .then((blob) => {
-          reader.onloadend = () => resolve(reader.result);
-          reader.onerror = reject;
-          reader.readAsDataURL(blob);
-        });
-    });
-
   const handleDownloadPDF = async () => {
   const doc = new jsPDF();
   const cleanText = (text) => {
