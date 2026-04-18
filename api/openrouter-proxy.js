@@ -1,9 +1,12 @@
+require('dotenv').config(); // This line is crucial for loading your API key
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method Not Allowed' });
   }
 
   const { messages, model } = req.body;
+
+console.log("Current Keys:", process.env.OPENROUTER_API_KEY ? "Key Found" : "Key Not Found");
 
   const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
   if (!OPENROUTER_API_KEY) {
